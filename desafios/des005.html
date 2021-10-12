@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversor de medidas</h1>
+    </header>
+    <div>
+        <input type="button" value="Converter" id="btn1" onclick="clicou()">
+    </div>
+    <div id="res">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+    <script>
+        var res = document.getElementById('res') //div onde sairá o resultado
+        var medidas = ['Km', 'quilômetros', 'Hm', 'hectômetros', 'Dam', 'decametros', 'dm', 'decímetros', 'cm', 'centímetros', 'mm', 'milímetros'] //medidas
+        function clicou(){
+            let n = Number(prompt('Digite a distância em metros (m)\nObs: use ponto (.)')) //número que será convertido
+            res.innerHTML = `<h2>A distância de ${n.toLocaleString()} metros, corresponde a...</h2>` //toLocaleString() coloca ponto (.) a cada três casas
+            var decimal = 1/4 //um sistema de contagem que irá pular o número 3, assim pulando os metros
+            for (c = 0;c < 12; c += 2){
+                var conv = Number(1000 / (10**parseInt(decimal))) //calcula o fator conversor para a unidade do momento (1000 = Km)
+                decimal += (1/4 + 1) //contagem = 0.25=Km/1.5=Hm/2.75=Dam/4=dm... (3 seria metros)
+                res.innerHTML += `<p>${(n/conv).toLocaleString()} ${medidas[c+1]} (${medidas[c]})</p>`//divide n pelo seu respectivo conversor
+            }
+        }
+    </script> 
+     </body>
+</html>

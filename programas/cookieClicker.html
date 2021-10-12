@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://www.rw-designer.com/icon-view/11148.png" type="image/x-icon">
+    <title>Clicker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+        body{
+            font: normal 12pt Arial;
+            background-color: rgb(145, 81, 28);
+ 
+        }
+        header{
+            color: white; 
+            text-align: center;     
+        }
+        h1{
+            font-family: 'Cookie', cursive;
+            font-weight: normal;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+        }
+        section{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 480px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body id="corpo" onload="mudou()">
+    <header>
+        <h1>Cookie</h1>
+    </header>
+    <section>
+        <div>
+            <p>
+                <label for="txtot">Total (quadrilhões): </label>
+                <input type="number" name="txtot" id="txtot" onkeyup="mudou()" onchange="mudou()" value="100">
+            </p>
+            <p>
+                <label for="txtcps">Por segundo (bilhões): </label>
+                <input type="number" name="txtcps" id="txtcps" onkeyup="mudou()" onchange="mudou()" value="1900"> 
+            </p>
+        </div>
+        <div id="res"> 
+            Preencha os dados acima para visualizar o resultado!
+        </div>
+    </section>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        function mudou(){
+            var txtot = document.getElementById('txtot')
+            var txtcps = document.getElementById('txtcps')
+            var res = document.getElementById('res')
+            var tot = Number(txtot.value) * 1000000000
+            var cps = Number(txtcps.value) * 1000
+            var segundos = tot/cps
+            var min = segundos / 60
+            var horas = segundos / 3600
+            if (horas < 1){
+                res.innerHTML = `<p><strong>${min.toFixed(2)} minutos</strong></p>`
+            }else{
+                res.innerHTML = `<p><strong>${horas.toFixed(2)} horas</strong></p>`
+                if (horas >= 24){
+                    var dias = horas / 24
+                    res.innerHTML += `<p><strong>${dias.toFixed(2)} dias</strong></p>`
+                } 
+            }
+        }
+    </script>
+</body>
+</html>

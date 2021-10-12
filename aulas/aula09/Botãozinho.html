@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 05</title>
+    <style>
+        body{
+            font: normal 15pt Verdana, Geneva, Tahoma, sans-serif;
+            background-color: blueviolet;
+            color: white;
+            text-align: center;
+        }
+        button{
+            position: absolute;
+            padding: 10px;
+            width: fit-content;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+        }
+        p{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <button id="boto" type="button" onclick="fundinho()">CLICA PORRA</button>
+    <script>
+        
+        function fundinho(){
+            var bot = document.getElementById('boto')
+            var fundo = document.body
+            var p1 = document.getElementsByTagName('p')[0]
+            bot.style.visibility = 'hidden'
+            fundo.style.background = 'black'
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidação correeeee</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desconto</h1>
+    <input type="button" value="Desconto 10%" id="btn1" onclick="clicou()">
+    <div id="res">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+    <script>
+        let res = document.getElementById('res')
+        function clicou(){
+            function realzinho(real){
+                return real.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            }
+            let produto = prompt('Qual o produto desejado?')
+            let custo = Number(prompt(`Quanto custa ${produto} que você deseja?`))
+            let des = custo / 10
+            res.innerHTML = `<h2>Calculando desconto de 10% para ${produto}.</h2>`
+            res.innerHTML += `<p>O preço original era ${realzinho(custo)}.</p>`
+            res.innerHTML += `<p>Você acaba de ganhar ${realzinho(des)} de desconto (10%).</p>`
+            res.innerHTML += `<p>No fim, você vai pagar ${realzinho(custo-des)} no produto ${produto}.</p>`
+        }
+    </script>
+</body>
+</html>

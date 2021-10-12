@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segundo Grau</title>
+    <style>
+        body{
+            font: normal 12pt Arial;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(105, 160, 241);
+            box-sizing: border-box;
+        }
+        header{
+            color: white;  
+            text-align: center;    
+        }
+        section{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 520px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Segundo Grau</h1>
+    </header>
+    <section>
+        <p>
+            <label for="A">Coeficiente A: </label>
+            <input type="number" name="A" id="A">
+        </p>
+        <p>
+            <label for="B">Coeficiente B: </label>
+            <input type="number" name="B" id="B">
+        </p>        
+        <p>
+            <label for="C">Coeficiente C: </label>
+            <input type="number" name="C" id="C">
+        </p>
+        <p>
+            <input type="button" value="Calcular" onclick="calcular()">
+        </p>    
+        <div id="res">
+            Esperando...
+        </div>
+    </section>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        function calcular(){
+            var txtA = document.getElementById("A")
+            var txtB = document.getElementById("B")
+            var txtC = document.getElementById("C")
+            var res = document.getElementById("res")
+            var numA = Number(txtA.value)
+            var numB = Number(txtB.value)
+            var numC = Number(txtC.value)
+            if (numA == 0){
+                res.innerHTML = "O coeficiente A deve ser diferente de 0."
+            }else{
+                if (numA == 0){
+                    var Ajoin = ""
+                }else{
+                    if (numA == 1){
+                        Ajoin = ""
+                    }else if (numA == -1){
+                        Ajoin = "-"
+                    }else{
+                        Ajoin = `${numA}`
+                    }
+                    Ajoin += "x² "
+                }
+                if (numB == 0){
+                    var Bjoin = ""
+                }else{
+                    if (numB == 1){
+                        Bjoin = "+ "
+                    }else if (numB == -1){
+                        Bjoin = "- "
+                    }else if (numB < 0){
+                        Bjoin = `- ${Math.abs(numB)}`
+                    }else{
+                        Bjoin = `+ ${Math.abs(numB)}`
+                    }
+                    Bjoin += "x "
+                }
+                if (numC == 0){
+                    var Cjoin = ""
+                }else{
+                    if (Math.sign(numC) == 1){
+                        Cjoin = `+ ${numC}`
+                    }else{
+                        Cjoin = `- ${Math.abs(numC)}`
+                    }
+                }
+                res.innerHTML = `<p>A equação é ${Ajoin}${Bjoin}${Cjoin}</p>`
+                delta = numB ** 2 - 4 * numC * numA
+                res.innerHTML += `<p>\u0394 = ${numB}² - 4 * ${numC} * ${numA}</p><p>\u0394 = ${delta}</p>`
+                if (delta < 0){
+                    res.innerHTML += `<p>Para esta equação, não há valores reais</p>`
+                }else if (delta == 0){
+                    res.innerHTML += `<p>Para esta equação, há apenas uma raiz.</p>`
+                    let raiz1 = (numB * - 1) / (2 * numA)
+                    res.innerHTML += `<p>O conjunto solução é:</p><p>S = {${raiz1}}</p>`
+                }else{
+                    res.innerHTML += `<p>Para esta equação, há duas raizes</p>`
+                    let raiz1 = ((numB * - 1) + (delta ** 0.5))/ (2 * numA)
+                    let raiz2 = ((numB * - 1) - (delta ** 0.5))/ (2 * numA)
+                    res.innerHTML += `<p>O conjunto solução é:</p><p>S = {${raiz1} ; ${raiz2}}</p>`
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversor R$ &rarr; US$</h1>
+    </header>
+    <div>
+        <input type="button" value="Converter" id="btn1" onclick="clicou()">
+    </div>
+    <div id="res">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+    <script>
+        var res = document.getElementById('res') //div onde sairá o resultado
+        function clicou(){
+            function realzinho(valor, moeda){
+                return valor.toLocaleString('pt-BR', {style: 'currency', currency: moeda})
+            }
+            let cot = Number(prompt('Antes de mais nada, qual a cotação do dólar atualmente?')) //cotação do dólar
+            let n = Number(prompt('Quanto R$ você tem na carteira?'))
+            res.innerHTML = `<h2>${realzinho(n, 'BRL')} convertido em US$ é...</h2>` //toLocaleString() coloca ponto (.) a cada três casas e de coloca (,)
+            let dol = n / cot
+            res.innerHTML += `${realzinho(n, 'BRL')} = ${realzinho(dol, 'USD')}`
+        }
+    </script> 
+     </body>
+</html>

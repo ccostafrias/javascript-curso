@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+        spam{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bhaskara</h1>
+    <input type="button" value="Calcular" id="btn1" onclick="clicou()">
+    <div id="res">
+        <p>Considerando uma equação no formato <strong>ax² + bx + c</strong> = 0, aperte o botão acima para calcular o valor de Δ</p>
+    </div>
+    <script>
+        let res = document.getElementById('res')
+        function clicou(){
+            function realzinho(real){
+                return real.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            }
+            let a = Number(prompt('Qual o valor de a?'))
+            let b = Number(prompt('Qual o valor de b?'))
+            let c = Number(prompt('Qual o valor de c?'))
+            let bask = b**2 - 4*a*c
+            res.innerHTML = `<p>A equação atual é <strong>${a}x² + ${b}x + ${c} = 0</strong></p>`
+            res.innerHTML += `<p>O cálculo realizado será <strong>Δ = ${b}² - 4 . ${a} . ${c}</strong></p>`
+            res.innerHTML += `<p>O valor calculado foi <spam><strong>Δ = ${bask}</strong></spam></p>`
+        }
+    </script>
+</body>
+</html>

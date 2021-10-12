@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reprovado</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+        span{
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Situação do aluno</h1>
+    <input type="button" value="Entrar com notas" id="btn1" onclick="clicou()">
+    <div id="res">
+        <p>Clique no botão acima para informar as notas do aluno.</p>
+    </div>
+    <script>
+        let res = document.getElementById('res')
+        function clicou(){
+            let nome = prompt('Qual o nome do aluno?')
+            let nota1 = Number(prompt(`Primeira nota de ${nome}`))
+            let nota2 = Number(prompt(`Segunda nota de ${nome}`))
+            var soma = Number(nota1) + Number(nota2)
+            var media = soma / 2
+            res.innerHTML = `<h2>Analisando a situação do aluno</h2>`
+            res.innerHTML += `<p>Com as notas ${nota1.toFixed(2)} e ${nota2.toFixed(2)}, a <strong>média é ${media.toFixed(2)}</strong>`
+                if (media < 3){
+                    res.innerHTML += `Com média abaixo de 3,0, o aluno está <span id="chucrute">REPROVADO</span>`
+                    let corolido = document.getElementById('chucrute')
+                    corolido.style.backgroundColor = 'rgba(255, 73, 73, 0.5)'
+                    corolido.style.color = 'rgb(90, 0, 0)'
+                }else if (media >=3 && media < 6){
+                    res.innerHTML += `Com média entre 3,0 e 6,0, o aluno está em <span id="chucrute">RECUPERAÇÃO</span>`
+                    let corolido = document.getElementById('chucrute')
+                    corolido.style.backgroundColor = 'rgba(255, 199, 95, 0.5)'
+                    corolido.style.color = 'rgb(194, 126, 0)'
+                }else if (media >= 6){
+                    res.innerHTML += `Com média acima de 6,0, o aluno está em <span id="chucrute">APROVADO</span>`
+                    let corolido = document.getElementById('chucrute')
+                    corolido.style.backgroundColor = 'rgba(65, 255, 81, 0.5)'
+                    corolido.style.color = 'rgb(0, 129, 11)'
+                }
+        }
+        
+    </script>
+</body>
+</html>

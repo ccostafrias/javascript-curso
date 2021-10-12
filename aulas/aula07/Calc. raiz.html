@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercício - 05</title>
+    <style>
+        body{
+            font: normal 20pt Arial;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: white;
+            background-color: thistle;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var n2 = parseFloat(prompt('Digite o índice'))
+        var n1 = parseFloat(prompt('Digite o radicando'))
+        var raiz = n1**(1/n2)
+        var sim = n2 == 3 || n2 ==2
+        n2 == 2? document.write(`Raiz quadrada de ${n1} é ${raiz}`) : n2 == 3? document.write(`Raiz cúbica de ${n1} é ${raiz}`) : document.write(`Raiz ${n2}ª de ${n1} é ${raiz}`)
+    </script>
+</body>
+</html>

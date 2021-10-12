@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cousins</title>
+    <style>
+        body{
+            font: normal 12pt Arial;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(105, 160, 241);
+            box-sizing: border-box;
+        }
+        header{
+            color: white;  
+            text-align: center;    
+        }
+        section{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 520px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Números primos</h1>
+    </header>
+    <section>
+        <div id="numero">
+            <p><label for="num">Número: </label>
+                <input type="number" name="num" id="num" min="1">
+                <input type="button" value="Verificar" onclick="primar()"></p>        </div>
+        <div id="txt">
+            Esperando por número...
+        </div>
+    </section>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        function primar(){
+            var num = document.getElementById('num').value //recebe o input
+            var primo = document.getElementById('txt') //onde sairá o resultado
+            let n = Number(num)
+            if (num == ""){ //alertando que não há nada preenchido
+                alert('Por favor, digite um número!')
+            }else if (num <= 0){ //alertando que o número não é válido
+                alert('Insira um número válido!')
+            }else if (num == 1){ 
+                primo.innerHTML = '<strong>1</strong> não é considerado primo, pois possui apenas um divisor.'
+            }else{
+                let div = [] //divisores
+                for(c=1;c<=n;c++){
+                    if (n%c==0){ //se na divisão entre "n" e o contador não houver resto, "c" é divisor de "n"
+                        div.push(c) //adicionando "c" aos divisores de "n"
+                    }
+                }
+                if (div[1]==n){ //se um número é primo, significa que o segundo divisor (índice 1 na array) dele é ele mesmo
+                    primo.innerHTML = `<strong>${n}</strong> é primo, pois é divisível apenas por <strong>1</strong> e por <strong>${n}</strong>`
+                }else{
+                    primo.innerHTML = `<strong>${n}</strong> não é primo, pois é divisível por`
+                    for (pos=0;pos<div.length-1;pos++){ //div.lenght - 1 para não finalizar com vírgula
+                        primo.innerHTML += `<strong> ${div[pos]},</strong>`
+                    }
+                    primo.innerHTML += `<strong> ${n}.</strong>` //finalizando com "." (ponto)
+                }
+            }
+        }
+    </script>
+</body>
+</html>

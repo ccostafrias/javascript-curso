@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+        spam{
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Preço mudou</h1>
+    <input type="button" value="Verificar" id="btn1" onclick="clicou()">
+    <div id="res">
+        <p>Clique no botão acima para analisar a mudança de preço.</p>
+    </div>
+    <script>
+        let pro = ['caro', 'barato', 'subiu', 'caiu', 'cima', 'baixo']
+        let res = document.getElementById('res')
+        function clicou(){
+            function real(r){
+                return r.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            }
+            let p1 = Number(prompt('Qual era o preço do produto?'))
+            let p2 = Number(prompt('Qual é o preço atual do produto?'))
+            let vari = Math.abs(p1-p2)
+            let i = 0
+            p1 < p2 ? i = 0 : i = 1
+            res.innerHTML = `<h2>Analisando os valores informados...</h2>`
+            res.innerHTML += `<p>O produto custava ${real(p1)} e agora custa ${real(p2)}.</p>`
+            res.innerHTML += `<p>Hoje o produto está mais ${pro[i]}.</p>`
+            res.innerHTML += `<p>O preço ${pro[i+2]} ${real(vari)} em relação ao preço anterior.</p>`
+            res.innerHTML += `<p>Uma variação de ${(100/(p1/vari)).toLocaleString()}% para ${pro[i+4]}.</p>`
+        }
+    </script>
+</body>
+</html>

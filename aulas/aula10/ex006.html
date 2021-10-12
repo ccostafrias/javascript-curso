@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #area{
+            font: normal 20pt Verdana;
+            background: rgb(96, 158, 34);
+            color: white;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+    </style>
+    <title>Dom</title>
+</head>
+<body>
+    <div id="area">
+        Interaja...
+    </div>
+    <script>
+        var a = document.getElementById('area')
+        a.addEventListener('click', clique)
+        a.addEventListener('mouseover', dentro)
+        a.addEventListener('mouseout', saiu)
+        function clique(){
+            a.innerText = 'ÂAaaaaâ'
+            a.style.backgroundColor = '#f0f'
+        }
+        function dentro(){
+            a.style.backgroundColor = '#f00'
+            a.innerText = 'Oi'
+        }
+        function saiu(){
+            a.style.backgroundColor = '#ff0'
+            a.innerText = 'Voltaaa'
+        }
+    </script>    
+</body>
+</html>

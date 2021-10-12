@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperatura</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Conversor de temperaturas</h1>
+    </header>
+    <div>
+        <input type="button" value="Converter" id="btn1" onclick="clicou()">
+    </div>
+    <div id="res">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+    <script>
+        var res = document.getElementById('res') //div onde sairá o resultado
+        var medidas = ['Kelvin', '°K', 'Fahrenheit', '°F'] //medidas
+        function clicou(){
+            let n = Number(prompt('Digite a temperatura em °C (Celsius)')) //número que será convertido
+            var conv = {
+                Kelvin: function(k){
+                    return k + 273.15
+                },
+                Fahrenheit: function(f){
+                    return (f * 1.8)+32
+                }
+            }
+            //conv é um objeto que armazena as funções que converterão o valor em °C
+            res.innerHTML = `<h2>A temperatura de ${n.toLocaleString()}°C, corresponde a...</h2>` //toLocaleString() coloca ponto (.) a cada três casas e de coloca (,)
+            for (c = 0;c < medidas.length; c += 2){ //pegará os valores 0 e 2, simulando um vetor de duas dimensões
+                res.innerHTML += `<p>${(conv[medidas[c]](n)).toLocaleString()}${medidas[c+1]} (${medidas[c]})</p>`//divide n pelo seu respectivo conversor
+            }//objetos != número como índice, então medidas[c] simula um índice para, assim, pegar a respectiva função (de mesmo nome da medida)
+        }
+    </script> 
+     </body>
+</html>

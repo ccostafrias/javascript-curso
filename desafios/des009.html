@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aumentuum</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reajuste salarial</h1>
+    <input type="button" value="Reajustar" id="btn1" onclick="clicou()">
+    <div id="res">
+        <p>Clique no botão acima para iniciar.</p>
+    </div>
+    <script>
+        let res = document.getElementById('res')
+        function clicou(){
+            function realzinho(real){
+                return real.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+            }
+            let nome = prompt('Qual o nome do funcionário')
+            let sal = Number(prompt(`Qual o salário de ${nome}?`))
+            let porC = Number(prompt(`Qual a porcentagem (%) que será acrescida no salário de ${nome}.`)) //%
+            let acres = sal / 100 * porC
+            res.innerHTML = `<h2>${nome} recebeu um aumento!</h2>`
+            res.innerHTML += `<p>O salário era ${realzinho(sal)}.</p>`
+            res.innerHTML += `<p>Com um aumento de ${porC}%, o salário vai aumentar ${realzinho(acres)} no próximo mês.</p>`
+            res.innerHTML += `<p>E a partir daí, ${nome} passará a ganhar ${realzinho(sal + acres)}.</p>`
+        }
+    </script>
+</body>
+</html>

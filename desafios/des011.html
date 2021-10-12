@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórmula</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 120px;
+            height: 50px;
+        }
+        spam{
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ano Bissexto</h1>
+    <input type="button" value="Verificar" id="btn1" onclick="clicou()">
+    <div id="res">
+        <p>Informe um ano para a verificação.</p>
+    </div>
+    <script>
+        let res = document.getElementById('res')
+        function clicou(){
+            let ano = Number(prompt('Qual o ano que você quer verificar?'))
+            res.innerHTML = `<h2>Analisando o ano de ${ano}...</h2>\nO ano de ${ano} <spam id='spamzinho'></spam>`
+            let s = document.getElementById('spamzinho')
+            if (ano % 4 == 0){
+                s.innerHTML = `É BISSEXTO `
+                s.style.backgroundColor = 'rgba(135, 230, 40, 0.5)'
+                s.style.color = 'rgb(115, 150, 10)'
+                res.innerHTML +=  ` \u2705`
+            }else{
+                s.innerHTML = `NÃO É BISSEXTO `
+                s.style.backgroundColor = 'rgba(230, 40, 40, 0.5)'
+                s.style.color = 'rgb(150, 10, 10)'
+                res.innerHTML +=  ` \u274C`
+            }
+        }
+    </script>
+</body>
+</html>

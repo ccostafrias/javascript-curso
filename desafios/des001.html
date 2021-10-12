@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão</title>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        input{
+            width: 90px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desafio das Mensagens</h1>
+    <input type="button" value="Botão 1" id="btn1" onclick="clicou(1)">
+    <input type="button" value="Botão 2" id="btn2" onclick="clicou(2)">
+    <input type="button" value="Botão 3" id="btn3" onclick="clicou(3)">
+    <script>
+        var b1 = document.getElementById('btn1')
+        var b2 = document.getElementById('btn2')
+        var b3 = document.getElementById('btn3')
+        function clicou(n){
+            alert(`Você clicou no ${n}° botão`)
+        }
+    </script>
+</body>
+</html>

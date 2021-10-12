@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regra Três</title>
+    <style>
+        body{
+            font: normal 12pt Arial;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(105, 160, 241);
+            box-sizing: border-box;
+        }
+        header{
+            color: white;  
+            text-align: center;    
+        }
+        main{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 580px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        section{
+            margin: auto;
+            text-align: center;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+        input{
+            margin: 2px -4px;
+            text-align: center;
+        }
+        .para{
+            background-color: cadetblue;
+            padding: 0px 25px;
+            color: white;
+            font-size: .7em;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Regra de Três</h1>
+    </header>
+    <main>
+        <section>
+            <p class="botão">
+                <input type="number" name="num" id="A" placeholder="A" onkeyup="mudouA(), mudou()" onchange="mudouA(), mudou()"> <span class="para">ESTÁ PARA</span> <input type="number" name="num" id="B" placeholder="B" onkeyup="mudouA(), mudou()" onchange="mudouB(), mudou()">
+            </p>
+            <p><strong>ASSIM COMO</strong></p>
+            <p class="botão">
+                <input type="number" name="num" id="C" placeholder="C" onkeyup="mudouA(), mudou()" onchange="mudouC(), mudou()"> <span class="para">ESTÁ PARA</span> <input type="number" name="num" id="X" placeholder="X" disabled>
+            </p>
+            <div id="res">
+            </div>  
+        </section>
+    </main>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        var txtA = document.getElementById('A')
+        var txtB = document.getElementById('B')
+        var txtC = document.getElementById('C')
+        var txtX = document.getElementById('X')
+        var res = document.getElementById('res')
+        function mudouA(){
+            numA = Number(txtA.value)
+            if (numA == 0){
+                res.innerHTML = "O campo A não podem conter 0"
+            }else{
+                res.innerHTML = ""
+            }
+        }
+        function mudouB(){
+            numB = Number(txtB.value)
+            if (numB == 0){
+                res.innerHTML = "O campo B não podem conter 0"
+            }else{
+                res.innerHTML = ""
+            }
+        }
+        function mudouC(){
+            numC = Number(txtC.value)
+            if (numC == 0){
+                res.innerHTML = "O campo C não podem conter 0"
+            }else{
+                res.innerHTML = ""
+            }
+        }
+        function mudou(){
+            if (numA != 0 && numB != 0 && numC != 0){
+                let x = (numB * numC)/numA
+                txtX.value = x
+            }
+        }
+    </script>
+</body>
+</html>

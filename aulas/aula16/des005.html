@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisador</title>
+    <style>
+        body{
+            font: normal 12pt Arial;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(105, 160, 241);
+            box-sizing: border-box;
+        }
+        header{
+            color: white;  
+            text-align: center;    
+        }
+        section{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 460px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+        select{
+            width: 150px;
+        }
+        #num{
+            width: 150px;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Analisador de números</h1>
+    </header>
+    <section>
+        <div id="numero">
+            <p><label for="num">Número (entre 1 e 100): </label>
+                <input type="number" name="num" id="num" max="100" min="1">
+                <input type="button" value="Adicionar" onclick="adicionar()"></p>
+                <p><select size="7" id="lista">
+                </select></p>
+                <input type="button" value="Finalizar" onclick="analisar()">
+        </div>
+        <div id="res">
+        </div>
+    </section>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        let array = []
+        let select = document.getElementById('lista')
+        let res = document.getElementById('res')
+        let soma = 0
+        let maior = 0
+        let menor = 101
+        function adicionar(){
+            var txtn = document.getElementById('num')
+            var n = Number(txtn.value)
+            if (n < 1 || n > 100){
+                alert('Número inválido! Digite outro.')
+            }else{
+                if (array.indexOf(n) == -1){ //-1 significa que não está na array (lista)
+                    var elemento = document.createElement('option') //cria um option para ser adicionado no select
+                    elemento.innerHTML = `Valor ${n} adicionado` //muda o texto da option
+                    select.appendChild(elemento) //adiciona o option na select
+                    array.push(n) //adiciona o valor na array (lista)
+                    res.innerHTML = ''
+                    soma += n
+                    if (n > maior){
+                        maior = n
+                    }
+                    if (n < menor){
+                        menor = n
+                    }
+                }else{
+                    alert('Número repetido! Digite outro.')
+                }
+            }
+            txtn.value = ""
+            txtn.focus()
+        }
+        function analisar(){
+            if (array == ""){
+                alert('Por favor, digite um número!')
+            }else{
+                //TODO
+                var txtt = document.createElement('p')
+                txtt.innerHTML = `Ao todo, temos ${array.length} elementos registrados.`
+                res.appendChild(txtt)
+                //MAIOR
+                var txtma = document.createElement('p')
+                txtma.innerHTML = `O maior valor informado foi o ${maior}.`
+                res.appendChild(txtma)
+                //MENOR
+                var txtme = document.createElement('p')
+                txtme.innerHTML = `O menor valor informado foi o ${menor}.`
+                res.appendChild(txtme)
+                //SOMA
+                var txts = document.createElement('p')
+                txts.innerHTML = `A soma entre os números é ${soma}.`
+                res.appendChild(txts)
+                //MÉDIA
+                var media = soma / Number(array.length)
+                var txtmedia = document.createElement('p')
+                txtmedia.innerHTML = `A média dos valores digitados é ${media.toFixed(2).replace('.',',')}.`
+                res.appendChild(txtmedia)
+            }
+        }
+    </script>
+</body>
+</html>

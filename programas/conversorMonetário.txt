@@ -1,0 +1,7 @@
+linha 73:
+'din*(cot/(cot**((1-conv.selectedIndex)*2)))'
+
+Essa equação pode ter dois resultados: din*0.19 ou din *5.30. Partindo disso, temos que 0.19 == 5.30/5.30**2, e 5.30 == 5.30/5.30**0 (n**0 == 1). Logo, temos que 1-conv.selectedIndex (ex: index == 0, então 1 - 0 = 1, ou seja, "1-" pega o valor não selecionado) * 2 será o valor correspondente ao índice da potência.
+
+** == elevado
+conv.selectedIndex == índice da opção selecionada no select

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contandinho</title>
+    <style>
+        body{
+            font: normal 12pt Arial;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(105, 160, 241);
+            box-sizing: border-box;
+        }
+        header{
+            color: white;   
+            text-align: center;   
+        }
+        section{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 480px;
+            border-radius: 20px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+        <div id="contando">
+            <p><label for="comeco">Início: </label><input type="number" name="comeco" id="comeco"></p>
+            <p><label for="fim">Fim: </label><input type="number" name="fim" id="fim"></p>
+            <p><label for="passo">Passo: </label><input type="number" name="passo" id="passo"></p>
+            <p><input type="button" value="Contar" onclick="contar()"></p>
+        </div>
+        <div id="contagem">
+            Preparando a contagem...
+        </div>
+    </section>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        function contar(){
+            var inicio = Number(document.getElementById('comeco').value)
+            var fim = document.getElementById('fim').value
+            var passo = Number(document.getElementById('passo').value)
+            var cont = document.getElementById('contagem')
+            if (fim == ""){
+                cont.innerHTML = 'Impossível contar!'
+            }else{
+                fim = Number(fim)
+                if (passo <= 0){
+                    alert('[ERRO] Passo inválido. Considerando PASSO como 1')
+                    passo = 1
+                }
+                cont.innerHTML = 'Contando:<br/>'
+                if (inicio < fim){
+                    //Crescente
+                    for (inicio; inicio <= fim; inicio += passo){
+                    cont.innerHTML += `${inicio} 👉 `
+                }
+                }else{
+                    //Decrescente
+                    for (inicio; fim <= inicio; inicio -= passo){
+                    cont.innerHTML += `${inicio} 👉 `
+                }
+                }
+                cont.innerHTML += `🏁`                
+            }
+        }
+    </script>
+</body>
+</html>
