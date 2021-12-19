@@ -1,10 +1,10 @@
 # javacript
  Curso de JavaScript do Curso em Video + programas
 
-<a href="programas/conversorMonetário.html">Conversor Monetário</a>
+<a href="https://ccostafrias.github.io/javacript/programas/conversorMonetário.html">Conversor Monetário</a>
 <br>
-<a href="programas/numPrimos.html">Números Primos</a>
+<a href="https://ccostafrias.github.io/javacript/programas/numPrimos.html">Números Primos</a>
 <br>
-<a href="programas/regraTres.html">Regra de Três</a>
+<a href="https://ccostafrias.github.io/javacript/programas/regraTres.html">Regra de Três</a>
 <br>
-<a href="programas/segundoGrau.html">Equações do Segundo Grau</a>
+<a href="https://ccostafrias.github.io/javacript/programas/segundoGrau.html">Equações do Segundo Grau</a>
