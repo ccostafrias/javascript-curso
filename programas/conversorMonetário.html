@@ -67,7 +67,7 @@
             function realzinho(valor, moeda){
                 return valor.toLocaleString('pt-BR', {style: 'currency', currency: moeda})
             }
-            let cot = 5.30 //cotação dólar
+            let cot = 5.70 //cotação dólar
             let conv = document.getElementById('lista') //servirá para pegar o valor selecionado do select
             let din = Number(document.getElementById('money').value) //valor digitado
             res.innerHTML = `<h3>${realzinho(din, conv.value)} = ${realzinho(din*(cot/(cot**((1-conv.selectedIndex)*2))), conv.options[1-conv.selectedIndex].value)}</h3>`
