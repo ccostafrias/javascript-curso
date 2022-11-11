@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Progressão</title>
+    <style>
+        body{
+            font: normal 12pt Arial;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(105, 160, 241);
+            box-sizing: border-box;
+        }
+        header{
+            color: white;  
+            text-align: center;    
+        }
+        section{
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            width: 520px;
+            border-radius: 10px;
+            box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+            box-sizing: border-box;
+        }
+        footer{
+            color: white;
+            font-style: italic;
+            text-align: center;
+        }
+        input.number{
+            width: 200px;
+        }
+        table{
+            border-spacing: 0;
+            width: 100%;
+            display: none;
+        }
+        th, td{
+            padding: 10px;
+            text-align: center;
+            border: 2px solid white;
+        }
+        thead th{
+            background-color: rgb(105, 160, 241);
+            color: white;
+        }
+        tbody th{
+            background-color: rgb(105, 160, 241);
+            color: white;
+        }
+
+        tr:nth-child(odd){
+            background-color: antiquewhite;
+        }
+        tr:nth-child(even){
+            background-color: azure;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <header>
+        <h1>Progressão</h1>
+    </header>
+    <section>
+        <p>
+            <label for="A">Primeiro termo: </label>
+            <input type="number" name="a1" id="a1" class="number">
+        </p>
+            <label for="B">Razão / Quociente: </label>
+            <input type="number" name="q" id="q" class="number" oninput="disableCheck()">
+            <label for="B">Infinito? </label>
+            <input type="checkbox" name="check" id="check" onchange="disableNum()" disabled="true">
+        </p>
+            <label for="C">Num. termos: </label>
+            <input type="number" name="n" id="n" class="number">
+        </p>
+        <p>
+            <input type="button" class="w3-button w3-blue w3-round" value="Calcular" onclick="calcular()" >
+        </p>    
+        <table id="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Progressão Aritimética</th>
+                    <th>Progressão Geométrica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Nº Termo</th>
+                    <td id="geral_pa"></td>
+                    <td id="geral_pg"></td>
+                </tr>
+                <tr>
+                    <th>Somatória (&#8721;)</th>
+                    <td id="sum_pa"></td>
+                    <td id="sum_pg"></td>
+                </tr>
+                <tr>
+                    <th>Produtório (&#8719;)</th>
+                    <td id="pro_pa"></td>
+                    <td id="pro_pg"></td>
+                </tr>
+                <tr>
+                    <th>N primeiros termos</th>
+                    <td id="n_pa"></td>
+                    <td id="n_pg"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="res">
+        </div>
+    </section>
+    <footer>
+        <h3>&copy; CursoemVídeo</h3>
+    </footer>
+    <script>
+        let check = document.getElementById("check")
+        function disableNum(){
+            if (check.checked){
+                document.getElementById("n").disabled = true
+            }else{
+                document.getElementById("n").disabled = false
+            }
+        }
+        function disableCheck(){
+            var txtQ = document.getElementById("q")
+            var q = Number(txtQ.value)
+            if (-1 < q && q < 1 && q!= 0){
+                document.getElementById("check").disabled = false
+            }else{
+                document.getElementById("check").disabled = true
+                document.getElementById("check").checked = false
+                disableNum()
+            }
+        }
+        function calcular(){
+            var txtA1 = document.getElementById("a1")
+            var txtQ = document.getElementById("q")
+            var txtN = document.getElementById("n")
+            var res = document.getElementById("res")
+
+            var table = document.getElementById("table")
+            var geral_pa = document.getElementById("geral_pa")
+            var geral_pg = document.getElementById("geral_pg")
+            var sum_pa = document.getElementById("sum_pa")
+            var sum_pg = document.getElementById("sum_pg")
+            var pro_pa = document.getElementById("pro_pa")
+            var pro_pg = document.getElementById("pro_pg")
+            var n_pa = document.getElementById("n_pa")
+            var n_pg = document.getElementById("n_pg")
+
+            var a1 = Number(txtA1.value)
+            var q = Number(txtQ.value)
+            var n = Number(txtN.value)
+
+            res.innerHTML = ""
+
+            if (a1 == 0 || q == 0){
+                res.innerHTML = "As caixas devem ser diferentes de 0."
+            }else{
+                table.style.display = "table"
+                if (check.checked){
+                    s = a1 / (1 - q)
+                    an = a1 * (q ** (n-1))
+                    //res.innerHTML = `<p>A somatória é igual a <strong>${s}</strong>.</p>`
+                    //res.innerHTML += `<p>O produtório tende a <strong>0</strong>.</p>`
+                    geral_pg.innerHTML = `<strong>-</strong>`
+                    sum_pg.innerHTML = `<strong>${s}</strong>`
+                    pro_pg.innerHTML = `<strong>0</strong>`
+                    geral_pa.innerHTML = `<strong>-</strong>`
+                    sum_pa.innerHTML = `<strong> ∞ </strong>`
+                    pro_pa.innerHTML = `<strong> ∞ </strong>`
+                }else{
+                    if (n == 0){
+                        res.innerHTML = "As caixas devem ser diferentes de 0."
+                    }else{
+                        s = a1 * (q ** n - 1) / (q - 1)
+                        sum_pg.innerHTML = `<strong>${s}</strong>`
+                        s = ((2 * a1 + ((n - 1)*q)) * n)/2
+                        sum_pa.innerHTML = `<strong>${s}</strong>`
+                        if (q <= -1 || q >= 1){
+                            p = ((a1 ** n) * q ** (n*(n-1)/2))
+                            pro_pg.innerHTML = `<strong>${p}</strong>`
+                            pro_pa.innerHTML = `<strong>-</strong>`
+                        }
+                        an = a1 * (q ** (n-1))
+                        geral_pg.innerHTML = `<strong>${an}</strong>`
+                        an = a1 + ((n - 1)*q)
+                        geral_pa.innerHTML = `<strong>${an}</strong>`
+                        if (q <= -1 || q >= 1){
+                            //res.innerHTML = `<p>Termos da P.G.:</p>`
+                            for (c=1;c<n;c++){
+                                an = a1 * (q ** (c-1))
+                                n_pg.innerHTML += `<strong> ${an} </strong><sub>(${c})</sub>,`
+                            }
+                            an = a1 * (q ** (n-1))
+                            n_pg.innerHTML += `<strong> ${an} </strong><sub>(${n})</sub>.`
+                            //res.innerHTML += `<p>Termos da P.A.:</p>`
+                            for (c=1;c<n;c++){
+                                an = a1 + ((c - 1)*q)
+                                n_pa.innerHTML += `<strong> ${an} </strong><sub>(${c})</sub>,`
+                            }
+                            an = a1 + ((n - 1)*q)
+                            n_pa.innerHTML += `<strong> ${an} </strong><sub>(${n})</sub>,`
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
