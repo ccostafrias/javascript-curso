@@ -61,7 +61,7 @@
             background-color: azure;
         }
         input[type="button"]{
-            background-color: #008CBA;
+            background-color: rgb(105, 160, 241);
             padding: 12px 16px;
             font-size: 1em;
             font-weight: bold;
@@ -72,7 +72,7 @@
             transition-duration: 0.4s;
         }
         input[type="button"]:hover{
-            border: 2px solid #008CBA;
+            border: 2px solid rgb(105, 160, 241);
             background-color: white;
             color: black;
         }
@@ -96,7 +96,7 @@
             <input type="number" name="n" id="n" class="number">
         </p>
         <p>
-            <input type="button" class="w3-button w3-blue w3-round" value="Calcular" onclick="calcular()" >
+            <input type="button" value="Calcular" onclick="calcular()" >
         </p>    
         <table id="table">
             <thead>
@@ -176,6 +176,8 @@
             var n = Number(txtN.value)
 
             res.innerHTML = ""
+            n_pg.innerHTML = ""
+            n_pa.innerHTML = ""
 
             if (a1 == 0 || q == 0){
                 res.innerHTML = "As caixas devem ser diferentes de 0."
@@ -184,14 +186,12 @@
                 if (check.checked){
                     s = a1 / (1 - q)
                     an = a1 * (q ** (n-1))
-                    //res.innerHTML = `<p>A somatória é igual a <strong>${s}</strong>.</p>`
-                    //res.innerHTML += `<p>O produtório tende a <strong>0</strong>.</p>`
                     geral_pg.innerHTML = `<strong>-</strong>`
                     sum_pg.innerHTML = `<strong>${s}</strong>`
                     pro_pg.innerHTML = `<strong>0</strong>`
                     geral_pa.innerHTML = `<strong>-</strong>`
-                    sum_pa.innerHTML = `<strong> ∞ </strong>`
-                    pro_pa.innerHTML = `<strong> ∞ </strong>`
+                    sum_pa.innerHTML = `<strong>∞</strong>`
+                    pro_pa.innerHTML = `<strong>∞</strong>`
                 }else{
                     if (n == 0){
                         res.innerHTML = "As caixas devem ser diferentes de 0."
@@ -200,31 +200,29 @@
                         sum_pg.innerHTML = `<strong>${s}</strong>`
                         s = ((2 * a1 + ((n - 1)*q)) * n)/2
                         sum_pa.innerHTML = `<strong>${s}</strong>`
-                        if (q <= -1 || q >= 1){
+                        //if (q <= -1 || q >= 1){
                             p = ((a1 ** n) * q ** (n*(n-1)/2))
                             pro_pg.innerHTML = `<strong>${p}</strong>`
                             pro_pa.innerHTML = `<strong>-</strong>`
-                        }
+                        //}
                         an = a1 * (q ** (n-1))
                         geral_pg.innerHTML = `<strong>${an}</strong>`
                         an = a1 + ((n - 1)*q)
                         geral_pa.innerHTML = `<strong>${an}</strong>`
-                        if (q <= -1 || q >= 1){
-                            //res.innerHTML = `<p>Termos da P.G.:</p>`
+                        //if (q <= -1 || q >= 1){
                             for (c=1;c<n;c++){
                                 an = a1 * (q ** (c-1))
                                 n_pg.innerHTML += `<strong> ${an} </strong><sub>(${c})</sub>,`
                             }
                             an = a1 * (q ** (n-1))
                             n_pg.innerHTML += `<strong> ${an} </strong><sub>(${n})</sub>.`
-                            //res.innerHTML += `<p>Termos da P.A.:</p>`
                             for (c=1;c<n;c++){
                                 an = a1 + ((c - 1)*q)
                                 n_pa.innerHTML += `<strong> ${an} </strong><sub>(${c})</sub>,`
                             }
                             an = a1 + ((n - 1)*q)
                             n_pa.innerHTML += `<strong> ${an} </strong><sub>(${n})</sub>,`
-                        }
+                        //}
                     }
                 }
             }
