@@ -1,12 +1,12 @@
-# javacript
- Curso de JavaScript do Curso em Video + programas
+# JavaScript
+> Curso de JavaScript do Curso em Video
 
-<a href="https://ccostafrias.github.io/javacript/programas/conversorMonetário.html">Conversor Monetário</a>
-<br>
-<a href="https://ccostafrias.github.io/javacript/programas/numPrimos.html">Números Primos</a>
-<br>
-<a href="https://ccostafrias.github.io/javacript/programas/regraTres.html">Regra de Três</a>
-<br>
-<a href="https://ccostafrias.github.io/javacript/programas/segundoGrau.html">Equações do Segundo Grau</a>
-<br>
-<a href="https://ccostafrias.github.io/javacript/programas/progressao.html">P.A. e P.G.</a>
+<a href="https://www.youtube.com/playlist?list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1"><img src="https://i.ytimg.com/vi/BXqUH86F-kA/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBltGuJn6JWd5Q5oDZ1QeNR__5cNw"></a>
+
+## Programas
+
+* [Conversor Monetário](https://ccostafrias.github.io/javascript-curso/programas/conversorMonetário.html)
+* [Números Primos](https://ccostafrias.github.io/javascript-curso/programas/numPrimos.html)
+* [Regra de Três](https://ccostafrias.github.io/javascript-curso/programas/regraTres.html)
+* [Equações do Segundo Grau](https://ccostafrias.github.io/javascript-curso/programas/segundoGrau.html)
+* [P.A. e P.G.](https://ccostafrias.github.io/javascript-curso/programas/progressao.html)
