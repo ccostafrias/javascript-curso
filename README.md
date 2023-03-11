@@ -1,7 +1,7 @@
-# JavaScript
-> Curso de JavaScript do Curso em Video
+# JavaScript - Curso em Vídeo
+> Curso de JavaScript do Curso em Vídeo.
 
-<a href="https://www.youtube.com/playlist?list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1"><img src="https://i.ytimg.com/vi/BXqUH86F-kA/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBltGuJn6JWd5Q5oDZ1QeNR__5cNw"></a>
+<a href="https://www.youtube.com/playlist?list=PLHz_AreHm4dlsK3Nr9GVvXCbpQyHQl1o1"><img src="https://i.ytimg.com/vi/BXqUH86F-kA/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBltGuJn6JWd5Q5oDZ1QeNR__5cNw" style="width: 100%;"></a>
 
 ## Programas
 
